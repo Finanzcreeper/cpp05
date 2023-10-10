@@ -34,12 +34,12 @@ std::string Bureaucrat::getName() const
 
 void Bureaucrat::demotion()
 {
-	++this->grade;
+	this->setGrade(this->getGrade() + 1);
 }
 
 void Bureaucrat::promotion()
 {
-	--this->grade;
+	this->setGrade(this->getGrade() - 1);
 }
 
 Bureaucrat::gradeToHighException::gradeToHighException(int input) : grade(input)
