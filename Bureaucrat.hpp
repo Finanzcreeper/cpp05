@@ -18,15 +18,16 @@ public:
 	public:
 		explicit gradeToHighException(int input);
 		const char * what() const throw();
-		int getGrade();
+		int getGrade() const;
 	};
-	class GradeToLowException : public std::exception
+	class gradeToLowException : public std::exception
 	{
 	private:
 		int grade;
 	public:
-		explicit GradeToLowException(int input);
+		explicit gradeToLowException(int input);
 		const char * what() const throw();
+		int getGrade() const;
 	};
 
 	Bureaucrat();

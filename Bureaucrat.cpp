@@ -16,9 +16,9 @@ Bureaucrat::Bureaucrat(Bureaucrat &src) : name(src.name), grade(src.grade)
 void Bureaucrat::setGrade(const int input)
 {
 	if (input < 1)
-		throw gradeToHighException(grade);
+		throw gradeToHighException(input);
 	if (input > 155)
-		throw GradeToLowException(grade);
+		throw gradeToLowException(input);
 	this->grade = input;
 }
 
@@ -50,17 +50,22 @@ const char *Bureaucrat::gradeToHighException::what() const throw()
 	return ("Grade to high");
 }
 
-int Bureaucrat::gradeToHighException::getGrade()
+int Bureaucrat::gradeToHighException::getGrade() const
 {
 	return this->grade;
 }
 
-Bureaucrat::GradeToLowException::GradeToLowException(int input) : grade(input)
+Bureaucrat::gradeToLowException::gradeToLowException(int input) : grade(input)
 {}
 
-const char *Bureaucrat::GradeToLowException::what() const throw()
+const char *Bureaucrat::gradeToLowException::what() const throw()
 {
 	return ("Grade to low:");
+}
+
+int Bureaucrat::gradeToLowException::getGrade() const
+{
+	return (this->grade);
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
