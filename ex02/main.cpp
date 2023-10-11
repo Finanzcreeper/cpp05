@@ -1,30 +1,19 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
 	Bureaucrat a("Arbeiter_des_Gehobenen_Dienstes",12);
-	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",100);
+	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",150);
 	Bureaucrat f(a);
-	Form q("72a-1",15,11);
-	Form h;
-	std::cout << q << std::endl;
-	std::cout << h << std::endl;
+	ShrubberyCreationForm park("park");
 	try
 	{
-		b.signForm(h);
-		b.signForm(q);
+		b.signForm(park);
+		f.signForm(park);
 	}
-	catch (Form::gradeToLowException &exception)
-	{
-		std::cout << exception.what() << std::endl;
-	}
-	try
-	{
-		f.signForm(h);
-		f.signForm(q);
-	}
-	catch (Form::gradeToLowException &exception)
+	catch (AForm::gradeToLowException &exception)
 	{
 		std::cout << exception.what() << std::endl;
 	}

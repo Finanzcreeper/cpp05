@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat()
@@ -82,7 +82,7 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &src)
 	return out;
 }
 
-void Bureaucrat::signForm(Form &document) {
+void Bureaucrat::signForm(AForm &document) {
 	if(document.getSignedStatus() == true)
 		std::cout << this->getName() << " couldn’t sign " << document.getName() << " because it was already signed." << std::endl;
 	else if(document.getSignGrade() < this->getGrade())
