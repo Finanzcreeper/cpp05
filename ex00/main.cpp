@@ -4,6 +4,8 @@ int main()
 {
 	Bureaucrat a("Arbeiter_des_Gehobenen_Dienstes",12);
 	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",100);
+	Bureaucrat e(a);
+	std::cout << "cpy: "<< e << std::endl;
 	try
 	{
 		Bureaucrat c("Wegbefoerderter_Idiot",-1);

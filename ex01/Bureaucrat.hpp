@@ -4,6 +4,9 @@
 #include <string>
 #include <stdexcept>
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -40,6 +43,8 @@ public:
 	void setGrade(int input);
 	void promotion();
 	void demotion();
+
+	void signForm(Form &document);
 
 	Bureaucrat& operator=(const Bureaucrat& src);
 };

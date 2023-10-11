@@ -1,9 +1,33 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
 	Bureaucrat a("Arbeiter_des_Gehobenen_Dienstes",12);
 	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",100);
+	Bureaucrat f(a);
+	Form q("72a-1",15,11);
+	Form h;
+	std::cout << q << std::endl;
+	std::cout << h << std::endl;
+	try
+	{
+		b.signForm(h);
+		b.signForm(q);
+	}
+	catch (Form::gradeToLowException &exception)
+	{
+		std::cout << exception.what() << std::endl;
+	}
+	try
+	{
+		f.signForm(h);
+		f.signForm(q);
+	}
+	catch (Form::gradeToLowException &exception)
+	{
+		std::cout << exception.what() << std::endl;
+	}
 	try
 	{
 		Bureaucrat c("Wegbefoerderter_Idiot",-1);
