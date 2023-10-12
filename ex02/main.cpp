@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
@@ -8,15 +10,44 @@ int main()
 	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",150);
 	Bureaucrat f(a);
 	ShrubberyCreationForm park("park");
+	PresidentialPardonForm grace("Your MUM");
+	RobotomyRequestForm slime("slime");
+	try {
+		f.signForm(park);
+		f.executeForm(park);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		f.signForm(grace);
+		f.executeForm(grace);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		f.signForm(slime);
+		f.executeForm(slime);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	while(f.getGrade() > 5) {
+		f.promotion();
+	}
 	try
 	{
-		b.signForm(park);
-		f.signForm(park);
+		f.executeForm(grace);
 	}
-	catch (AForm::gradeToLowException &exception)
+	catch (std::exception &exception)
 	{
 		std::cout << exception.what() << std::endl;
 	}
+	/*
 	try
 	{
 		Bureaucrat c("Wegbefoerderter_Idiot",-1);
@@ -54,6 +85,6 @@ int main()
 	{
 		std::cout << exception.what() << ": " << exception.getGrade() << std::endl;
 	}
-	std::cout << a << std::endl;
+	std::cout << a << std::endl;*/
 	return 0;
 }

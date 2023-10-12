@@ -1,9 +1,9 @@
 #include "AForm.hpp"
 
-AForm::AForm() : signed_status(false), sign_grade(155), execution_grade(155), name("Altpapier")
+AForm::AForm() : signed_status(false), sign_grade(155), execution_grade(155), name("Altpapier"), target("none")
 {}
 
-AForm::AForm(const std::string& name, int sign, int exe) : signed_status(false), sign_grade(sign), execution_grade(exe), name(name)
+AForm::AForm(const std::string& name, int sign, int exe, const std::string& target) : signed_status(false), sign_grade(sign), execution_grade(exe), name(name), target(target)
 {
 	if (sign < 1)
 		throw AForm::gradeToHighException(sign);
@@ -15,7 +15,7 @@ AForm::AForm(const std::string& name, int sign, int exe) : signed_status(false),
 		throw AForm::gradeToLowException(exe);
 }
 
-AForm::AForm(AForm &src) : signed_status(src.signed_status), sign_grade(src.sign_grade), execution_grade(src.execution_grade), name(src.name)
+AForm::AForm(AForm &src) : signed_status(src.signed_status), sign_grade(src.sign_grade), execution_grade(src.execution_grade), name(src.name), target(src.target)
 {}
 
 AForm::~AForm()
@@ -43,11 +43,24 @@ std::string AForm::getName() const {
 	return this->name;
 }
 
+std::string AForm::getTarget() const {
+	return this->target;
+}
+
 void AForm::BeSigned(Bureaucrat &signee) {
 	if (signee.getGrade() > this->sign_grade)
 		throw AForm::gradeToLowException(signee.getGrade());
 	else
 		this->signed_status = true;
+}
+
+void AForm::execute(const Bureaucrat &executor) {
+	if (this->signed_status == false)
+		throw formNotSignedException(this->getSignedStatus());
+	else if (this->getExecutionGrade() < executor.getGrade())
+		throw gradeToLowException(executor.getGrade());
+	else
+		this->Purpose();
 }
 
 std::ostream &operator<<(std::ostream &out, AForm &src)
@@ -79,4 +92,15 @@ const char *AForm::gradeToHighException::what() const throw() {
 
 int AForm::gradeToHighException::getGrade() const {
 	return this->grade;
+}
+
+AForm::formNotSignedException::formNotSignedException(bool signstatus) : isSigned(signstatus)
+{}
+
+const char *AForm::formNotSignedException::what() const throw() {
+	return "Form not signed";
+}
+
+bool AForm::formNotSignedException::getSignStatus() const {
+	return this->isSigned;
 }

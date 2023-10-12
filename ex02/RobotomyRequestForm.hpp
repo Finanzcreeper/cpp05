@@ -13,7 +13,7 @@ public:
 	RobotomyRequestForm(RobotomyRequestForm &src);
 	~RobotomyRequestForm();
 
-	void Purpose(std::string target);
+	void Purpose();
 	RobotomyRequestForm &operator=(RobotomyRequestForm src);
 };
 

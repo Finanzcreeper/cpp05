@@ -6,7 +6,7 @@
 #include <iostream>
 #include "Form.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -44,7 +44,7 @@ public:
 	void promotion();
 	void demotion();
 
-	void signForm(Form &document);
+	void signForm(AForm &document);
 
 	Bureaucrat& operator=(const Bureaucrat& src);
 };

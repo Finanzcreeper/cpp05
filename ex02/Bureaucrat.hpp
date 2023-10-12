@@ -45,6 +45,7 @@ public:
 	void demotion();
 
 	void signForm(AForm &document);
+	void executeForm(AForm &document);
 
 	Bureaucrat& operator=(const Bureaucrat& src);
 };

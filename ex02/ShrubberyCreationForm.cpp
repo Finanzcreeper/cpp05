@@ -3,21 +3,21 @@
 #include <cstdlib>
 #include <ctime>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("altpapier",145,137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("altpapier",145,137,"none")
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &name): AForm(name, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &name): AForm(name, 145, 137, name)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src) : AForm(src.getName(), 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src) : AForm(src)
 {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {}
 
-void ShrubberyCreationForm::Purpose(std::string target) {
+void ShrubberyCreationForm::Purpose() {
 	std::ofstream OFile;
-	target = target+"_shrubbery";
+	std::string target = this->getTarget()+"_shrubbery";
 	OFile.open(target.c_str());
 	srand((unsigned int)std::time(NULL));
 	int a = std::rand() % 7;

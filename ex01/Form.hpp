@@ -1,4 +1,4 @@
-#ifndef CPP05_FORM_HPP
+#ifndef CPP05_AFORM_HPP
 #define CPP05_FORM_HPP
 
 #include <string>
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	bool signed_status;
@@ -33,10 +33,10 @@ class gradeToLowException : public std::exception
 		const char * what() const throw();
 		int getGrade() const;
 	};
-	Form();
-	Form(const std::string& name, int sign, int exe);
-	Form(Form& src);
-	~Form();
+	AForm();
+	AForm(const std::string& name, int sign, int exe);
+	AForm(AForm& src);
+	~AForm();
 
 	bool getSignedStatus() const;
 	int getSignGrade() const;
@@ -45,9 +45,9 @@ class gradeToLowException : public std::exception
 
 	void BeSigned(Bureaucrat &signee);
 
-	Form& operator=(const Form &src);
+	AForm& operator=(const AForm &src);
 };
 
-std::ostream &operator<<(std::ostream &out, Form &src);
+std::ostream &operator<<(std::ostream &out, AForm &src);
 
-#endif //CPP05_FORM_HPP
+#endif //CPP05_AFORM_HPP

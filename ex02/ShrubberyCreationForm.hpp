@@ -12,7 +12,7 @@ public:
 	explicit ShrubberyCreationForm(const std::string &name);
 	ShrubberyCreationForm(ShrubberyCreationForm &src);
 	~ShrubberyCreationForm();
-	void Purpose(std::string target);
+	void Purpose();
 
 	ShrubberyCreationForm &operator=(ShrubberyCreationForm src);
 };

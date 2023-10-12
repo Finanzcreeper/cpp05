@@ -2,33 +2,26 @@
 #include <cstdlib>
 #include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("Altpapier", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Altpapier", 72, 45, "none")
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm(target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm(target, 72, 45, target)
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src) : AForm(src.getName(), 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src) : AForm(src)
 {}
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {}
 
-void RobotomyRequestForm::Purpose(std::string target) {
+void RobotomyRequestForm::Purpose() {
 	srand((unsigned int)std::time(NULL));
 	int a = std::rand() % 2;
 	std::cout << "*DriLliNg sOuNDs*" << std::endl;
-	switch(a) {
-		default:
-			std::cout << target << "has been robotomized successfully." <<std::endl;
-			break;
-		case 0:
-			std::cout << target << "has been robotomized successfully." <<std::endl;
-			break;
-		case 1:
-			std::cout << "robotomy of " << target << " failed" << std::endl;
-			break;
-	}
+	if (a == 1)
+		std::cout << this->getTarget() << " has been robotomized successfully." <<std::endl;
+	else
+		std::cout << "robotomy of " << this->getTarget() << " failed" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm src) {

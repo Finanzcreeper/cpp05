@@ -61,7 +61,7 @@ Bureaucrat::gradeToLowException::gradeToLowException(int input) : grade(input)
 
 const char *Bureaucrat::gradeToLowException::what() const throw()
 {
-	return ("Grade to low:");
+	return ("Grade to low");
 }
 
 int Bureaucrat::gradeToLowException::getGrade() const
@@ -90,6 +90,18 @@ void Bureaucrat::signForm(AForm &document) {
 	else
 		std::cout << this->getName() << " signed " << document.getName() << std::endl;
 	document.BeSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm &document) {
+	if(document.getExecutionGrade() < this->grade){
+		std::cout << this->getName() << "could not execute Form: " << document.getName() << " because: ";
+		throw gradeToLowException(this->getGrade());
+	}
+
+	else {
+		std::cout << this->getName() << " executed Form: " << document.getName() << std::endl;
+		document.execute(*this);
+	}
 }
 
 Bureaucrat::~Bureaucrat()

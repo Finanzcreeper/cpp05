@@ -6,8 +6,8 @@ int main()
 	Bureaucrat a("Arbeiter_des_Gehobenen_Dienstes",12);
 	Bureaucrat b("Arbeiter_des_Niederen_Dienstes",100);
 	Bureaucrat f(a);
-	Form q("72a-1",15,11);
-	Form h;
+	AForm q("72a-1", 15, 11);
+	AForm h;
 	std::cout << q << std::endl;
 	std::cout << h << std::endl;
 	try
@@ -15,7 +15,7 @@ int main()
 		b.signForm(h);
 		b.signForm(q);
 	}
-	catch (Form::gradeToLowException &exception)
+	catch (AForm::gradeToLowException &exception)
 	{
 		std::cout << exception.what() << std::endl;
 	}
@@ -24,7 +24,7 @@ int main()
 		f.signForm(h);
 		f.signForm(q);
 	}
-	catch (Form::gradeToLowException &exception)
+	catch (AForm::gradeToLowException &exception)
 	{
 		std::cout << exception.what() << std::endl;
 	}
