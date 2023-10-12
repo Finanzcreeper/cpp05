@@ -46,7 +46,7 @@ public:
 	AForm();
 	AForm(const std::string& name, int sign, int exe, const std::string& target);
 	AForm(AForm& src);
-	~AForm();
+	virtual ~AForm();
 
 	bool getSignedStatus() const;
 	int getSignGrade() const;

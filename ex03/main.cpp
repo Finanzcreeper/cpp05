@@ -52,6 +52,9 @@ int main()
 	{
 		std::cout << exception.what() << std::endl;
 	}
+	delete ppf;
+	delete scf;
+	delete rrf;
 	/*
 	try
 	{
