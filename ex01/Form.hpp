@@ -1,4 +1,4 @@
-#ifndef CPP05_AFORM_HPP
+#ifndef CPP05_FORM_HPP
 #define CPP05_FORM_HPP
 
 #include <string>
@@ -50,4 +50,4 @@ class gradeToLowException : public std::exception
 
 std::ostream &operator<<(std::ostream &out, AForm &src);
 
-#endif //CPP05_AFORM_HPP
+#endif //CPP05_FORM_HPP
